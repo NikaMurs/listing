@@ -53,13 +53,13 @@ export default function Item(props:ItemProps) {
             <div className="item">
                 <div className="item-image">
                     <a href={item.url}>
-                        <img alt="img" src={item.MainImage.url_570xN} />
+                        <img alt="img" src={item.MainImage !== undefined ? item.MainImage.url_570xN : ''} />
                     </a>
                 </div>
                 <div className="item-details">
-                    <p className="item-title">{getTitle(item.title)}</p>
-                    <p className="item-price">{getCurrency(item.currency_code) + item.price}</p>
-                    <p className={'item-quantity ' + getQuantity(item.quantity)}>{item.quantity} left</p>
+                    <p className="item-title">{getTitle(item.title !== undefined ? item.title : '')}</p>
+                    <p className="item-price">{getCurrency(item.currency_code !== undefined ? item.currency_code : '') + item.price}</p>
+                    <p className={'item-quantity ' + getQuantity(item.quantity !== undefined ? item.quantity : 0)}>{item.quantity} left</p>
                 </div>
             </div>
         )
